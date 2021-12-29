@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const { mongoURI } = require('./config/dev');
 const cookieParser = require('cookie-parser'); //쿠키사용사 사용 라이브러리
 const { auth } = require('./middleware/auth');
+const cors = require('cors')
 
 
 mongoose.connect(mongoURI)
@@ -18,9 +19,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //application/json으로 가져옴
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(cors({
+  origin: '*',
+  credentials: true,
+}));
+
 
 app.get('/', (req, res) => {
   res.send('hello')
+});
+app.get('/api/hi', (req,res)=>{
+  res.send('안녕하세요');
 });
 
 app.post('api/user/register', (req, res) => {
@@ -89,5 +98,6 @@ app.get('/api/user/logout', auth, (req, res) => {
       })
     })
 });
+
 
 app.listen(port, () => console.log(`Example app ${port}`));

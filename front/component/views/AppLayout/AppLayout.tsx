@@ -16,9 +16,6 @@ const AppLayout = () => {
       <Link href="/register">
         <a>to RegisterPage</a>
       </Link>
-      <Link href="/b">
-        <a>to BPage</a>
-      </Link>
     </div>
   )
 }

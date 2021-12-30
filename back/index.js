@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //application/json으로 가져옴
 app.use(bodyParser.json());
 app.use(cookieParser());
+
 app.use(cors({
   origin: '*',
   credentials: true,
